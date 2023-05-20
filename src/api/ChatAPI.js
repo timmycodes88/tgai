@@ -17,12 +17,19 @@ import { auth, db } from '../firebaseConfig'
  */
 
 const ChatAPI = {
-  sendMessage: async message => {
-    const { displayName, photoURL, uid } = auth.currentUser
+  sendMessage: async (message, isAI) => {
+    const { displayName, photoURL, uid: cuid } = auth.currentUser
     const col = collection(db, 'messages')
+
+    const username = isAI ? 'tg-AI' : displayName
+    const image = isAI
+      ? 'https://tse1.mm.bing.net/th?id=OIP.duhHNy7oYUHAmZDkaMEidQHaHa&pid=Api&P=0&h=180'
+      : photoURL
+    const uid = isAI ? 'ai' : cuid
+
     await addDoc(col, {
-      username: displayName,
-      image: photoURL,
+      username,
+      image,
       message,
       timestamp: Date.now(),
       uid,

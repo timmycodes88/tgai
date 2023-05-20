@@ -2,12 +2,15 @@ import tw, { styled } from 'twin.macro'
 import { useAppData } from '../App'
 import ChatAPI from '../api/ChatAPI'
 import { useEffect, useRef, useState } from 'react'
+import { useOpenAI } from '../hooks/useOpenAI'
 
 export default function Home() {
   const user = useAppData()
   const autoScrollRef = useRef()
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
+
+  const { generate, loading } = useOpenAI()
 
   useEffect(() => {
     return ChatAPI.listen(newMsg => setMessages(curr => [...curr, newMsg]))
@@ -16,6 +19,7 @@ export default function Home() {
   const sendMessage = async () => {
     if (!message) return
     ChatAPI.sendMessage(message)
+    if (message.startsWith('/')) generate(message.replace('/', ''))
     setMessage('')
   }
 
@@ -69,6 +73,7 @@ export default function Home() {
             </MessageBox>
           )
         })}
+        {loading && <p>Generating...</p>}
         <div ref={autoScrollRef} />
       </ChatBox>
       <DraftMessage>

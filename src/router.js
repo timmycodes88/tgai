@@ -3,6 +3,7 @@ import App, { appLoader } from './App'
 import Login from './pages/Login'
 import Home from './pages/Home'
 import { auth } from './firebaseConfig'
+import { homeLoader } from './routes/homeRoute'
 
 const redirectLoader = (loader, path) => async () => {
   if (path === '/login' && auth.currentUser) return redirect('/')
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: redirectLoader(() => null, '/'),
+        loader: redirectLoader(homeLoader, '/'),
         element: <Home />,
       },
       {

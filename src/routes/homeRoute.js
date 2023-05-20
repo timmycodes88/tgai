@@ -1,9 +1,8 @@
 import { useLoaderData } from 'react-router-dom'
-import { auth } from '../firebaseConfig'
 
-export function homeLoader() {
-  return auth.currentUser
+export async function homeLoader() {
+  return null
 }
 
-/**@type {import('firebase/auth').User} */
+/**@type {Message[]} */
 export const useHomeData = () => useLoaderData()

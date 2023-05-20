@@ -55,7 +55,7 @@ const Header = () => {
   )
 }
 
-const HeaderWrapper = tw.div`h-[var(--header-height)] w-full flex items-center justify-end px-8 shadow-md bg-gradient-to-r from-fuchsia-700 to-amber-400`
+const HeaderWrapper = tw.div`h-[var(--header-height)] w-full flex items-center justify-between px-8 shadow-md bg-gradient-to-r from-fuchsia-700 to-amber-400`
 const ProfileImg = tw.img`rounded-full w-12 h-12 border-2 border-white`
 const UserName = tw.h6`text-lg text-white font-bold`
 const ProfileWrapper = tw.div`flex items-center gap-4`

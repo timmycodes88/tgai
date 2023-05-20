@@ -30,7 +30,7 @@ export default function App() {
   )
 }
 
-const Body = tw.div`[--header-height: 6.5rem] bg-gradient-to-b from-black via-indigo-900 to-cyan-400`
+const Body = tw.div`[--header-height: 6.5rem] bg-gradient-to-b from-black via-fuchsia-900 to-amber-500`
 const Main = tw.main`overflow-y-auto h-[calc(100vh - var(--header-height))] w-screen`
 
 const Header = () => {
@@ -55,7 +55,7 @@ const Header = () => {
   )
 }
 
-const HeaderWrapper = tw.div`bg-black h-[var(--header-height)] w-full flex items-center justify-end px-8 shadow-md`
+const HeaderWrapper = tw.div`h-[var(--header-height)] w-full flex items-center justify-end px-8 shadow-md bg-gradient-to-r from-fuchsia-700 to-amber-400`
 const ProfileImg = tw.img`rounded-full w-12 h-12 border-2 border-white`
 const UserName = tw.h6`text-lg text-white font-bold`
 const ProfileWrapper = tw.div`flex items-center gap-4`
